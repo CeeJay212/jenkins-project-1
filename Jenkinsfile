@@ -31,7 +31,7 @@ pipeline {
 
     stage ('build and push image') {
       steps {
-        withCredential([usernamePassword(withCredentialsId: 'docker-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        withCredentials([usernamePassword(withCredentialsId: 'docker-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             sh "docker build -t ceejay212/jenkins-project:${IMAGE_NAME} ."
             sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
             sh "docker push ceejay212/jenkins-project:${IMAGE_NAME}"

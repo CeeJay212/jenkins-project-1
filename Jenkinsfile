@@ -7,7 +7,7 @@ pipeline {
       steps {
         script {
           dir('app') {
-            sh 'nmp version minor --no-git-tag-version'
+            sh 'npm version minor --no-git-tag-version'
             def packageJson = readJSON file: 'packageJson'
             def version = packageJson.version
             env.IMAGE_NAME = "$version-$BUILD_NUMBER"

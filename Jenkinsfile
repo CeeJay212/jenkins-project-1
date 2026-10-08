@@ -46,7 +46,7 @@ pipeline {
             sh '''
                 git config --global user.email "jenkins@example.com"
                 git config --global user.name "jenkins"
-                git set-url origin https://$GIT_USER:$GIT_PASS@github.com/CeeJay212/jenkins-project-1.git
+                git remote set-url origin https://$GIT_USER:$GIT_PASS@github.com/CeeJay212/jenkins-project-1.git
                 git add .
                 git commit -m "version bump"
                 git push https://$GIT_USER:$GIT_PASS@github.com/CeeJay212/jenkins-project-1.git HEAD:main
